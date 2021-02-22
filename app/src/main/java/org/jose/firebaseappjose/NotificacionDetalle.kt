@@ -1,11 +1,16 @@
 package org.jose.firebaseappjose
 
-import androidx.appcompat.app.AppCompatActivity
+import android.app.PendingIntent.getActivity
+import android.content.Intent
+import android.net.Uri
 import android.os.Bundle
+import android.text.TextUtils
 import android.widget.TextView
-import androidx.appcompat.widget.Toolbar
+import android.widget.Toast
+import androidx.appcompat.app.AppCompatActivity
 import com.google.android.material.floatingactionbutton.FloatingActionButton
 import com.google.android.material.snackbar.Snackbar
+
 
 class NotificacionDetalle : AppCompatActivity() {
 
@@ -48,12 +53,32 @@ fabescribir=findViewById(R.id.fabescribir)
         fabllamar.setOnClickListener { view ->
             Snackbar.make(view, "Replace with your own action", Snackbar.LENGTH_LONG)
                 .setAction("Action", null).show()
+
+            val phoneNo: String = texttelefono.getText().toString()
+            if (!TextUtils.isEmpty(phoneNo)) {
+                val dial = "$phoneNo"
+                startActivity(Intent(Intent.ACTION_CALL, Uri.parse(dial)))
+            } else {
+                Toast.makeText(this, "Enter a phone number", Toast.LENGTH_SHORT).show()
+            }
+
         }
 
 
         fabescribir.setOnClickListener { view ->
             Snackbar.make(view, "Replace with your own action", Snackbar.LENGTH_LONG)
                 .setAction("Action", null).show()
+
+
+
+            val emailIntent = Intent(Intent.ACTION_SENDTO, Uri.fromParts("mailto", "correo@gmail.com", null))
+            emailIntent.putExtra(Intent.EXTRA_SUBJECT, "Android APP - ")
+            startActivity(Intent( emailIntent))
+
+
+
+
+
         }
 
 

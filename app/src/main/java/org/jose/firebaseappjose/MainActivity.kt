@@ -17,7 +17,7 @@ class MainActivity : AppCompatActivity() {
     lateinit var login:Button
     lateinit var pisos:Button
     lateinit var clientesLista1: MutableList<Cliente>
-
+    lateinit var botonagenda:Button
 
     @SuppressLint("InvalidAnalyticsName")
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -26,6 +26,7 @@ class MainActivity : AppCompatActivity() {
 
         login=findViewById<Button>(R.id.botonmensajes)
         pisos=findViewById(R.id.botonpisos)
+        botonagenda=findViewById(R.id.botonagenda)
 
         clientesLista1 = (application as Aplicacion).clientelistaappli
 
@@ -46,6 +47,15 @@ login.setOnClickListener {
 
 
 
+
+        botonagenda.setOnClickListener {
+
+
+            var intento= Intent(this, Agenda::class.java)
+            startActivity(intento)
+        }
+
+
     }
 
 
@@ -54,17 +64,17 @@ login.setOnClickListener {
 
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
