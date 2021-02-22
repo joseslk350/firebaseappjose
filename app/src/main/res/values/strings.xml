@@ -1,0 +1,5 @@
+<resources>
+    <string name="app_name">firebaseappjose</string>
+    <string name="pref_file">preference_file_key</string>
+    <string name="recuperar">recuperar</string>
+</resources>
