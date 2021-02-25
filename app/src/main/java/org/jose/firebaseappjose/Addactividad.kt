@@ -164,17 +164,19 @@ lateinit var radiogrupo: RadioGroup
                         tipo="VPO"
                         foto=null
                     }
-/*
+
                    pisoadd.altura=textviewaltura.text.toString()
                     pisoadd.bano=textviewbano.text.toString()
-                    pisoadd.url=textURL.text.toString()
+                   // pisoadd.url=textURL.text.toString()
+                    //NO QUIERO QUE AÑADA FOTOS PORQUE ESCRIBIRA MAL LA URL
+                    pisoadd.url=""
                     pisoadd.habitacion=textviewhabit.text.toString()
                     pisoadd.nombre=textViewdireccion.text.toString()
                     pisoadd.precio=textviewprecio.text.toString()
                     pisoadd.supp=textviewsupp.text.toString()
                     pisoadd.tipo=textViewtipo.text.toString()
-                    pisoadd.foto=null
-*/
+                  //  pisoadd.foto=null  --> no lo estoy usando .foto en ninguna parte.
+
 
 
 
