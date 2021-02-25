@@ -4,6 +4,7 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.widget.ImageView
 import android.widget.TextView
+import com.squareup.picasso.Picasso
 
 class PisoDetalle : AppCompatActivity() {
 
@@ -55,7 +56,8 @@ class PisoDetalle : AppCompatActivity() {
         varprecio.text= item.precio.toString()
         varsupp.text= item.supp.toString()
         vartipo.text= item.tipo.toString()
-        imageVifoto.setImageBitmap(item.foto)
+        //imageVifoto.setImageBitmap(item.foto)
+        Picasso.get().load(item.url).into(imageVifoto)
 
 
     }

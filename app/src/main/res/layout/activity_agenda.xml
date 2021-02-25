@@ -10,6 +10,7 @@
         android:id="@+id/et1"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
+        android:layout_marginTop="50dp"
         android:background="@android:color/darker_gray"
         android:ems="10"
         android:gravity="top|left|end"
@@ -23,6 +24,9 @@
         android:id="@+id/button"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Button" />
+        android:text="Guardar"
+        app:layout_constraintBottom_toTopOf="@+id/et1"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

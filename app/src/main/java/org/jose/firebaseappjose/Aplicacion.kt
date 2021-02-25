@@ -104,8 +104,7 @@ var urldeimagen: String=""
                     piso.tipo=tip
                     urldeimagen= piso.url!!
 
-                 //   urlImage = URL("https://static.wixstatic.com/media/b25591_99f5cd6c9b6b4899aef6c2e486e291c7~mv2_d_3000_2930_s_4_2.jpg/v1/fill/w_655,h_640,al_c,q_85,usm_0.66_1.00_0.01/b25591_99f5cd6c9b6b4899aef6c2e486e291c7~mv2_d_3000_2930_s_4_2.webp?" +
-                 //   "auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260")
+               /* HECHO CON LA BIBLIOTECA DE PICASSO EN PISODETALLE Y PISORECICLEVIEW
 
                     urlImage=URL(urldeimagen + "auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260")
                     // async task to get / download bitmap from url
@@ -133,6 +132,7 @@ var urldeimagen: String=""
 
 
                     }
+                    */
 
 
 

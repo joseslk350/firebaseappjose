@@ -4,8 +4,7 @@
 
     <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
     <uses-permission android:name="android.permission.INTERNET" />
-    <uses-permission android:name="android.permission.CALL_PHONE"/>
-
+    <uses-permission android:name="android.permission.CALL_PHONE" />
 
     <application
         android:name=".Aplicacion"
@@ -15,7 +14,8 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.Firebaseappjose">
-        <activity android:name=".Agenda"></activity>
+        <activity android:name=".Addactividad"></activity>
+        <activity android:name=".Agenda" />
         <activity android:name=".PisoDetalle" />
         <activity android:name=".NotificacionDetalle" />
         <activity android:name=".MainActivity">

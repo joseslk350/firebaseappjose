@@ -71,8 +71,7 @@ fabescribir=findViewById(R.id.fabescribir)
 
 
 
-            val emailIntent = Intent(Intent.ACTION_SENDTO, Uri.fromParts("mailto", "correo@gmail.com", null))
-            emailIntent.putExtra(Intent.EXTRA_SUBJECT, "Android APP - ")
+            val emailIntent = Intent(Intent.ACTION_SENDTO, Uri.fromParts("mailto", "$email", null))
             startActivity(Intent( emailIntent))
 
 

@@ -9,7 +9,7 @@ import android.view.ViewGroup
 import android.widget.ImageView
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
-
+import com.squareup.picasso.Picasso
 
 
 class PisoAdapter(private val pisoList: List<Piso>, val context: Context) : RecyclerView.Adapter<PisoAdapter.MyViewHolder>(){
@@ -40,7 +40,8 @@ class PisoAdapter(private val pisoList: List<Piso>, val context: Context) : Recy
             nombre.text = piso.nombre
             url.text = piso.url
             precio.text = piso.precio
-            foto.setImageBitmap(piso.foto)
+            //foto.setImageBitmap(piso.foto)
+            Picasso.get().load(piso.url).into(foto)
 
 
 

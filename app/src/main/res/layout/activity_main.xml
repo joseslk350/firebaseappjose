@@ -4,6 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@color/black"
     tools:context=".MainActivity">
 
     <LinearLayout
@@ -19,7 +20,41 @@
 
         <Space
             android:layout_width="match_parent"
-            android:layout_height="140dp"
+            android:layout_height="60dp"
+            android:layout_weight="0" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="0"
+            android:orientation="horizontal">
+
+            <ImageButton
+                android:id="@+id/botonlistapisos"
+                android:layout_width="164dp"
+                android:layout_height="134dp"
+                android:layout_weight="1"
+                android:backgroundTint="@color/black"
+                app:srcCompat="@drawable/listado150" />
+
+            <Space
+                android:layout_width="16dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1" />
+
+            <ImageButton
+                android:id="@+id/botonaddpropiedad"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:backgroundTint="@color/black"
+                app:srcCompat="@drawable/casa150" />
+
+        </LinearLayout>
+
+        <Space
+            android:layout_width="match_parent"
+            android:layout_height="30dp"
             android:layout_weight="0" />
 
         <LinearLayout
@@ -27,55 +62,80 @@
             android:layout_height="wrap_content"
             android:orientation="horizontal">
 
-            <Button
-                android:id="@+id/botonpisos"
+            <TextView
+                android:id="@+id/textView"
+                android:layout_width="138dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:text="Lista propiedades"
+                android:textColor="@color/white" />
+
+            <TextView
+                android:id="@+id/textView2"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
-                android:text="Propiedades" />
-
-            <Space
-                android:layout_width="16dp"
-                android:layout_height="wrap_content"
-                android:layout_weight="1" />
-
-            <Button
-                android:id="@+id/botonmensajes"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:text="Mensajes" />
+                android:text="Añadir propiedad"
+                android:textColor="@color/white" />
 
         </LinearLayout>
 
         <Space
             android:layout_width="match_parent"
-            android:layout_height="140dp"
+            android:layout_height="60dp"
             android:layout_weight="0" />
 
         <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="0"
             android:orientation="horizontal">
 
-            <Button
+            <ImageButton
                 android:id="@+id/botonagenda"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
+                android:layout_width="164dp"
+                android:layout_height="134dp"
                 android:layout_weight="1"
-                android:text="Agenda" />
+                android:backgroundTint="@color/black"
+                app:srcCompat="@drawable/agenda150" />
 
             <Space
                 android:layout_width="16dp"
                 android:layout_height="wrap_content"
                 android:layout_weight="1" />
 
-            <Button
-                android:id="@+id/botononedrive"
+            <ImageButton
+                android:id="@+id/botonmensajes"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:backgroundTint="@color/black"
+                app:srcCompat="@drawable/carta150" />
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_weight="0"
+            android:orientation="horizontal">
+
+            <TextView
+                android:id="@+id/textView3"
+                android:layout_width="138dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:text="Agenda"
+                android:textColor="@color/white" />
+
+            <TextView
+                android:id="@+id/textView4"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
-                android:text="sin funcion aun" />
+                android:text="Notificaciones"
+                android:textColor="@color/white" />
+
         </LinearLayout>
 
     </LinearLayout>

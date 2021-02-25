@@ -158,13 +158,13 @@ tools:context=".NotificacionDetalle">
                 app:srcCompat="@android:drawable/stat_sys_phone_call" />
 
             <Space
-                android:layout_width="220dp"
+                android:layout_width="120dp"
                 android:layout_height="match_parent"
                 android:layout_weight="0" />
 
             <com.google.android.material.floatingactionbutton.FloatingActionButton
                 android:id="@+id/fabescribir"
-                android:layout_width="252dp"
+                android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
 
                 app:srcCompat="@android:drawable/ic_dialog_email" />
