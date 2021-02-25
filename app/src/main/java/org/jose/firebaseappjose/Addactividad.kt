@@ -46,8 +46,10 @@ lateinit var radiogrupo: RadioGroup
     lateinit var contador: String
     var n: Int = 1
     var ncontador: Int = 0
+    var numero:Int=0
 
-   lateinit var pisoadd: Piso
+
+    lateinit var pisoadd: Piso
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -106,6 +108,7 @@ lateinit var radiogrupo: RadioGroup
         }
 
 
+//cuenta a lo cutre cuantos elementos hay en la lista. (cuando tenga tiempo ver si hay algun .size
 
         db.collection("pisos")
             .get()
@@ -204,17 +207,53 @@ lateinit var radiogrupo: RadioGroup
 
                 buttondelante.setOnClickListener {
 
-                    db.collection("pisos").document(n.toString()).get().addOnSuccessListener {
+                    if (n<ncontador){
 
-                        textViewdireccion.setText(it.get("nombre") as String?)
+                        db.collection("pisos").document(n.toString()).get().addOnSuccessListener {
 
-                        textviewprecio.setText(it.get("telefono") as String?)
+                            textViewdireccion.setText(it.get("nombre") as String?)
+                            textviewprecio.setText(it.get("precio") as String?)
+                            textviewhabit.setText(it.get("habitacion") as String?)
+                            textviewbano.setText(it.get("bano") as String?)
+                            textviewaltura.setText(it.get("altura") as String?)
+                            textviewsupp.setText(it.get("supp") as String?)
+                            textURL.setText(it.get("url") as String?)
+                            textViewtipo.setText(it.get("tipo") as String?)
 
+
+
+
+                        }
+
+
+                        n++
                     }
-                    n++
+                    else{
+                        Toast.makeText(this, "NO hay mas pisos metidos",Toast.LENGTH_SHORT).show()
+                    }
+
+
 
 
                 }
+
+
+
+
+
+
+
+                }
+
+
+
+
+
+
+
+
+
+
 
                 buttondetras.setOnClickListener {
 
@@ -310,7 +349,6 @@ lateinit var radiogrupo: RadioGroup
 
 
     }
-}
 
 
 
