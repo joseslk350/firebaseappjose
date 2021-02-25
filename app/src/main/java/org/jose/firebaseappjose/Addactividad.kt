@@ -1,5 +1,6 @@
 package org.jose.firebaseappjose
 
+import android.graphics.Bitmap
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.widget.*
@@ -45,6 +46,8 @@ lateinit var radiogrupo: RadioGroup
     lateinit var contador: String
     var n: Int = 1
     var ncontador: Int = 0
+
+   lateinit var pisoadd: Piso
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -145,11 +148,46 @@ lateinit var radiogrupo: RadioGroup
                     )
 
                     ncontador++
+
+
+
+                    val pisoadd = Piso().apply {
+
+                        actualizado=false
+                        altura="0"
+                        bano="0"
+                        url=""
+                        habitacion="0"
+                        nombre=""
+                        precio=""
+                        supp=""
+                        tipo="VPO"
+                        foto=null
+                    }
+/*
+                   pisoadd.altura=textviewaltura.text.toString()
+                    pisoadd.bano=textviewbano.text.toString()
+                    pisoadd.url=textURL.text.toString()
+                    pisoadd.habitacion=textviewhabit.text.toString()
+                    pisoadd.nombre=textViewdireccion.text.toString()
+                    pisoadd.precio=textviewprecio.text.toString()
+                    pisoadd.supp=textviewsupp.text.toString()
+                    pisoadd.tipo=textViewtipo.text.toString()
+                    pisoadd.foto=null
+*/
+
+
+
+                   (application as Aplicacion).pisoList.add(pisoadd)
+
+
+
+
                 }
 
                 button2recuperar.setOnClickListener {
 
-                    db.collection("users").document(ncontador.toString()).get()
+                    db.collection("pisos").document(ncontador.toString()).get()
                         .addOnSuccessListener {
 
                             textViewdireccion.setText(it.get("nombre") as String?)
@@ -178,7 +216,7 @@ lateinit var radiogrupo: RadioGroup
                 buttondetras.setOnClickListener {
 
 
-                    db.collection("users")
+                    db.collection("pisos")
                         .get()
                         .addOnSuccessListener { result ->
 
@@ -219,7 +257,7 @@ lateinit var radiogrupo: RadioGroup
 
                 button3eliminar.setOnClickListener {
 
-                   // db.collection("users").document(ncontador.toString()).delete()
+                   // db.collection("pisos").document(ncontador.toString()).delete()
 
 
 

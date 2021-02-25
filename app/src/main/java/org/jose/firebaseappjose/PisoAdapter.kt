@@ -41,7 +41,18 @@ class PisoAdapter(private val pisoList: List<Piso>, val context: Context) : Recy
             url.text = piso.url
             precio.text = piso.precio
             //foto.setImageBitmap(piso.foto)
-            Picasso.get().load(piso.url).into(foto)
+
+
+
+            if (piso.url.toString()=="")
+            {
+                Picasso.get().load(R.drawable.nofoto200).into(foto);
+            }else{
+                Picasso.get().load(piso.url).into(foto)
+            }
+
+
+
 
 
 

@@ -57,8 +57,14 @@ class PisoDetalle : AppCompatActivity() {
         varsupp.text= item.supp.toString()
         vartipo.text= item.tipo.toString()
         //imageVifoto.setImageBitmap(item.foto)
-        Picasso.get().load(item.url).into(imageVifoto)
 
+      //  Picasso.get().load(item.url).into(imageVifoto)
+        if (item.url.toString()=="")
+        {
+            Picasso.get().load(R.drawable.nofoto200).into(imageVifoto);
+        }else{
+            Picasso.get().load(item.url).into(imageVifoto)
+        }
 
     }
 }
