@@ -104,7 +104,12 @@ var urldeimagen: String=""
                     piso.tipo=tip
                     urldeimagen= piso.url!!
 
-               /* HECHO CON LA BIBLIOTECA DE PICASSO EN PISODETALLE Y PISORECICLEVIEW
+               /* HECHO LA CARGA IMAGEN CON LA BIBLIOTECA DE PICASSO EN
+               PISODETALLE Y PISORECICLEVIEW
+
+               esto seria con asincronas pero va mas rapido "el codigo" que la descarga de imagenes
+               y no fija el bitmap a la variable. REVISAR motivo. funciona cambiando esto por la forma
+               de hacerlo con picasso.
 
                     urlImage=URL(urldeimagen + "auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260")
                     // async task to get / download bitmap from url

@@ -143,17 +143,6 @@ tools:context=".Addactividad">
                     android:layout_height="wrap_content" />
 
                 <Button
-                    android:id="@+id/button2recuperar"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="1"
-                    android:text="@string/recuperar" />
-
-                <Space
-                    android:layout_width="25dp"
-                    android:layout_height="wrap_content" />
-
-                <Button
                     android:id="@+id/button3eliminar"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
@@ -182,6 +171,18 @@ tools:context=".Addactividad">
                 <Space
                     android:layout_width="30dp"
                     android:layout_height="1dp"
+                    android:layout_weight="1" />
+
+                <Button
+                    android:id="@+id/button2recuperar"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:text="@string/recuperar" />
+
+                <Space
+                    android:layout_width="25dp"
+                    android:layout_height="wrap_content"
                     android:layout_weight="1" />
 
                 <Button

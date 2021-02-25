@@ -151,6 +151,7 @@ lateinit var radiogrupo: RadioGroup
 
 
 
+
                     val pisoadd = Piso().apply {
 
                         actualizado=false
