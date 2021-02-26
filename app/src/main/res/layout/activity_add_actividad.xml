@@ -136,7 +136,7 @@ tools:context=".Addactividad">
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
-                    android:text="guardar" />
+                    android:text="guardar/nuevo" />
 
                 <Space
                     android:layout_width="25dp"
@@ -178,7 +178,7 @@ tools:context=".Addactividad">
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
-                    android:text="@string/recuperar" />
+                    android:text="Editar" />
 
                 <Space
                     android:layout_width="25dp"

@@ -4,6 +4,7 @@ import android.graphics.Bitmap
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.widget.*
+import com.google.firebase.firestore.DocumentSnapshot
 import com.google.firebase.firestore.FirebaseFirestore
 
 
@@ -186,7 +187,8 @@ lateinit var radiogrupo: RadioGroup
 
                    (application as Aplicacion).pisoList.add(pisoadd)
 
-
+                    Toast.makeText(this, "Has GUARDADO un piso nuevo", Toast.LENGTH_SHORT)
+                            .show()
 
 
                 }
@@ -207,32 +209,20 @@ lateinit var radiogrupo: RadioGroup
 
                 buttondelante.setOnClickListener {
 
-                    if (n<ncontador){
+                    if (n<=ncontador-1){
 
                         db.collection("pisos").document(n.toString()).get().addOnSuccessListener {
+                            rellenar(it)
+                        }
+                        if (n<ncontador-1){
 
-                            textViewdireccion.setText(it.get("nombre") as String?)
-                            textviewprecio.setText(it.get("precio") as String?)
-                            textviewhabit.setText(it.get("habitacion") as String?)
-                            textviewbano.setText(it.get("bano") as String?)
-                            textviewaltura.setText(it.get("altura") as String?)
-                            textviewsupp.setText(it.get("supp") as String?)
-                            textURL.setText(it.get("url") as String?)
-                            textViewtipo.setText(it.get("tipo") as String?)
-
-
-
-
+                            n++
                         }
 
-
-                        n++
                     }
                     else{
                         Toast.makeText(this, "NO hay mas pisos metidos",Toast.LENGTH_SHORT).show()
                     }
-
-
 
 
                 }
@@ -258,7 +248,94 @@ lateinit var radiogrupo: RadioGroup
                 buttondetras.setOnClickListener {
 
 
-                    db.collection("pisos")
+                    if (n>=1){
+
+                        db.collection("pisos").document(n.toString()).get().addOnSuccessListener {
+                            rellenar(it)
+
+                        }
+                        if (n>1){
+
+                            n--
+                        }
+
+                    }
+                    else{
+                        Toast.makeText(this, "NO hay mas pisos metidos",Toast.LENGTH_SHORT).show()
+                    }
+
+
+
+
+
+
+
+
+
+                }  //fin buttondetras
+
+
+
+                button3eliminar.setOnClickListener {
+
+                   // db.collection("pisos").document(ncontador.toString()).delete()
+
+
+
+                }
+
+
+
+
+
+/*guardar con sharedpreferences.
+
+
+      val preferencia= getSharedPreferences("jose", Context.MODE_PRIVATE).edit()
+        preferencia.putString("clave2", emailvariabl)
+        preferencia.putString("3", providervariabl)
+        preferencia.apply()
+
+        crea var tipo getshared (clave, Contex.modo) y la ponemos en modo edicion. edit()
+        añadimos con clave-valor. y hacemos un apply para guardar
+
+        preferencia.apply()
+        preferencia.clear()  para borrar.
+
+
+        */
+
+
+
+
+                botonoff.setOnClickListener {
+
+                    onBackPressed() //vuelve a la anterior como si presionas boton de volver
+                }
+
+
+            }
+
+    private fun rellenar(it: DocumentSnapshot?) {
+
+        textViewdireccion.setText(it?.get("nombre") as String?)
+        textviewprecio.setText(it?.get("precio") as String?)
+        textviewhabit.setText(it?.get("habitacion") as String?)
+        textviewbano.setText(it?.get("bano") as String?)
+        textviewaltura.setText(it?.get("altura") as String?)
+        textviewsupp.setText(it?.get("supp") as String?)
+        textURL.setText(it?.get("url") as String?)
+        textViewtipo.setText(it?.get("tipo") as String?)
+
+    }
+
+
+}
+
+
+
+/*
+    db.collection("pisos")
                         .get()
                         .addOnSuccessListener { result ->
 
@@ -292,68 +369,6 @@ lateinit var radiogrupo: RadioGroup
 
 
                         }
-
-
-                }
-
-
-                button3eliminar.setOnClickListener {
-
-                   // db.collection("pisos").document(ncontador.toString()).delete()
-
-
-
-                }
-
-
-/*  un for para recorrer
-
-        for (postSnapshot in dataSnapshot.getChildren()) {
-            val comida: Comida = dataSnapshot.getValue(Comida::class.java)
-            comida.setId(dataSnapshot.getKey())
-            if (!comidas.contains(comida)) {
-                comidas.add(comida)
-            }
-        }
-
-*/
-
-
-/*guardar con sharedpreferences.
-
-
-      val preferencia= getSharedPreferences("jose", Context.MODE_PRIVATE).edit()
-        preferencia.putString("clave2", emailvariabl)
-        preferencia.putString("3", providervariabl)
-        preferencia.apply()
-
-        crea var tipo getshared (clave, Contex.modo) y la ponemos en modo edicion. edit()
-        añadimos con clave-valor. y hacemos un apply para guardar
-
-        preferencia.apply()
-        preferencia.clear()  para borrar.
-
-
-        */
-
-
-
-
-                botonoff.setOnClickListener {
-
-                    onBackPressed() //vuelve a la anterior como si presionas boton de volver
-                }
-
-
-            }
-
-
-    }
-
-
-
-/*
-si no tenemos tablas creadas.
 
 
 
