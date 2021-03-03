@@ -202,6 +202,8 @@ lateinit var radiogrupo: RadioGroup
 
                             textviewprecio.setText(it.get("telefono") as String?)
 
+                        //no sirve  Toast.makeText(this,it.getDocumentReference("pisos").toString(),Toast.LENGTH_SHORT ).show()
+
                         }
 
 

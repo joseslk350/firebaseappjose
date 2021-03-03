@@ -38,7 +38,7 @@ class PisoAdapter(private val pisoList: List<Piso>, val context: Context) : Recy
         fun setItem(piso: Piso) {
             pItem = piso
             nombre.text = piso.nombre
-            url.text = piso.url
+            //url.text = piso.url
             precio.text = piso.precio
             //foto.setImageBitmap(piso.foto)
 
