@@ -3,6 +3,7 @@ package org.jose.firebaseappjose
 import android.graphics.Bitmap
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.util.Log
 import android.widget.*
 import com.google.firebase.firestore.DocumentSnapshot
 import com.google.firebase.firestore.FirebaseFirestore
@@ -115,11 +116,7 @@ lateinit var radiogrupo: RadioGroup
             .get()
             .addOnSuccessListener { result ->
 
-                for (document in result) {
-                    ncontador++
-
-                }
-
+              ncontador=  result.size()
 
 
 
@@ -195,14 +192,19 @@ lateinit var radiogrupo: RadioGroup
 
                 button2recuperar.setOnClickListener {
 
-                    db.collection("pisos").document(ncontador.toString()).get()
+                    db.collection("pisos").document((ncontador-6).toString()!!).get()
                         .addOnSuccessListener {
 
                             textViewdireccion.setText(it.get("nombre") as String?)
 
                             textviewprecio.setText(it.get("telefono") as String?)
+                            var a : String= "nada"
 
-                        //no sirve  Toast.makeText(this,it.getDocumentReference("pisos").toString(),Toast.LENGTH_SHORT ).show()
+                            a=   it.id
+
+
+
+                        Toast.makeText(this,"$a",Toast.LENGTH_SHORT ).show()
 
                         }
 
@@ -284,6 +286,19 @@ lateinit var radiogrupo: RadioGroup
 
 
 
+                    db.collection("pisos")
+                        .get()
+                        .addOnSuccessListener { result ->
+
+rellenar(                            result.last()
+)
+                            result.last()
+                            result.elementAt(4).data.get("precio").toString()
+                           Toast.makeText(this,
+                                result.elementAt(4).data.get("precio").toString(),Toast.LENGTH_SHORT).show()
+                        }
+
+
                 }
 
 
@@ -312,11 +327,38 @@ lateinit var radiogrupo: RadioGroup
 
                 botonoff.setOnClickListener {
 
-                    onBackPressed() //vuelve a la anterior como si presionas boton de volver
+                  //  onBackPressed() //vuelve a la anterior como si presionas boton de volver
+
+buscar("33")
+
                 }
 
 
             }
+
+
+
+    private fun buscar(numero: String){
+
+        db.collection("pisos").document("$numero").get()
+                .addOnSuccessListener { document ->
+                    if (document != null) {
+
+
+                        rellenar(document)
+
+                    } else {
+                        Toast.makeText(this, "NO hay ese documento",Toast.LENGTH_SHORT).show()
+                    }
+                }
+                .addOnFailureListener { exception ->
+                    Toast.makeText(this, "FALLO en la recuperación de documento",Toast.LENGTH_SHORT).show()
+                }
+
+
+
+    }//fin buscar
+
 
     private fun rellenar(it: DocumentSnapshot?) {
 
@@ -371,6 +413,121 @@ lateinit var radiogrupo: RadioGroup
 
 
                         }
+
+
+
+
+
+
+
+
+
+
+
+
+OnCompleteListener se llama cuando la tarea finaliza, pero no importando si realizo el proceso exitosa mente o fallo. En el caso de tu programa no fallo por esa razón aparentemente tienen el mismo funcionamiento.
+
+En cambio OnSuccessListener determinas que no hubo ninguna falla al realizar la tarea, generalmente yo lo uso junto con OnFailureListener para determinar otra acción en caso de falla.
+
+  docRef.get().addOnSuccessListener(new OnSuccessListener<DocumentSnapshot>() {
+        @Override
+        public void onSuccess(DocumentSnapshot documentSnapshot) {
+            ...
+            ...
+        }
+    });
+
+
+  docRef.get().addOnFailureListener(new OnFailureListener() {
+        @Override
+        public void onFailure(@NonNull Exception e) {
+            ...
+            ...
+        }
+    });
+
+
+recoger documentos con condiciones
+
+db.collection("cities")
+        .whereEqualTo("capital", true)
+        .get()
+        .addOnSuccessListener { documents ->
+            for (document in documents) {
+                Log.d(TAG, "${document.id} => ${document.data}")
+            }
+        }
+        .addOnFailureListener { exception ->
+            Log.w(TAG, "Error getting documents: ", exception)
+        }
+
+
+
+
+
+
+
+
+
+Eventos para cambios locales
+Las operaciones de escritura locales en tu app invocarán agentes de escucha de instantáneas de inmediato. Esto se debe a una función importante llamada “compensación de latencia”. Cuando ejecutes una operación de escritura, los objetos de escucha recibirán una notificación con los datos nuevos antes de que estos se envíen al backend.
+
+Los documentos recuperados tienen una propiedad metadata.hasPendingWrites que indica si el documento tiene cambios locales que todavía no se escribieron en el backend. Puedes usar esta propiedad para determinar el origen de los eventos que recibe tu objeto de escucha de instantáneas:
+
+
+
+val docRef = db.collection("cities").document("SF")
+docRef.addSnapshotListener { snapshot, e ->
+    if (e != null) {
+        Log.w(TAG, "Listen failed.", e)
+        return@addSnapshotListener
+    }
+
+    val source = if (snapshot != null && snapshot.metadata.hasPendingWrites())
+        "Local"
+    else
+        "Server"
+
+    if (snapshot != null && snapshot.exists()) {
+        Log.d(TAG, "$source data: ${snapshot.data}")
+    } else {
+        Log.d(TAG, "$source data: null")
+    }
+}
+
+
+
+
+
+
+
+
+
+
+db.disableNetwork().addOnCompleteListener {
+    // Do offline things
+    // ...
+}
+Usa el siguiente método para volver a habilitar el acceso a la red:
+
+
+
+db.enableNetwork().addOnCompleteListener {
+    // Do online things
+    // ...
+}
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
