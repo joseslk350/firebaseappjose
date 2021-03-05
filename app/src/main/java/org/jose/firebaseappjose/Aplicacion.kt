@@ -82,6 +82,7 @@ var urldeimagen: String=""
 
                 for (document in result) {
                     // var S: String="${document.id} => ${document.data.get("nombre")}"
+                    var id: String="${document.id}"
                     var nom: String="${document.data.get("nombre")}"
                     var pre: String="${document.data.get("precio")}"
                     var url: String="${document.data.get("url")}"
@@ -94,6 +95,7 @@ var urldeimagen: String=""
 
                     var piso = Piso()
 
+                    piso.idpiso=id
                     piso.nombre=nom
                     piso.precio=pre
                     piso.url=url

@@ -20,8 +20,7 @@ class Addactividad : AppCompatActivity() {
     lateinit var button2recuperar: Button
     lateinit var button3eliminar: Button
 
-    lateinit var buttondelante: Button
-    lateinit var buttondetras: Button
+
 
     lateinit var r1 : RadioButton
     lateinit var r2 : RadioButton
@@ -46,7 +45,7 @@ lateinit var radiogrupo: RadioGroup
     lateinit var cliente: Cliente
     val clientesLista = mutableListOf<Cliente>()
     lateinit var contador: String
-    var n: Int = 1
+    var n: Int = 0
     var ncontador: Int = 0
     var numero:Int=0
 
@@ -64,8 +63,7 @@ lateinit var radiogrupo: RadioGroup
         button2recuperar = findViewById<Button>(R.id.button2recuperar)
         button3eliminar = findViewById<Button>(R.id.button3eliminar)
 
-        buttondelante = findViewById<Button>(R.id.buttondelante)
-        buttondetras = findViewById<Button>(R.id.buttonatras)
+
 
 
         textViewdireccion = findViewById<TextView>(R.id.textViewdireccion)
@@ -125,8 +123,7 @@ lateinit var radiogrupo: RadioGroup
                     Toast.LENGTH_SHORT
                 ).show()
 
-
-
+            }
 
 
 
@@ -134,6 +131,7 @@ lateinit var radiogrupo: RadioGroup
                     db.collection("pisos").document(ncontador.toString()!!).set(
 
                         hashMapOf(
+
                             "nombre" to textViewdireccion.text.toString(),
                             "precio" to textviewprecio.text.toString(),
                             "url" to textURL.text.toString(),
@@ -148,13 +146,13 @@ lateinit var radiogrupo: RadioGroup
                         )
                     )
 
-                    ncontador++
 
 
 
 
                     val pisoadd = Piso().apply {
 
+                        idpiso=""
                         actualizado=false
                         altura="0"
                         bano="0"
@@ -167,6 +165,7 @@ lateinit var radiogrupo: RadioGroup
                         foto=null
                     }
 
+                    pisoadd.idpiso=ncontador.toString()
                    pisoadd.altura=textviewaltura.text.toString()
                     pisoadd.bano=textviewbano.text.toString()
                    // pisoadd.url=textURL.text.toString()
@@ -190,51 +189,19 @@ lateinit var radiogrupo: RadioGroup
 
                 }
 
+
+
+
+
+
+
+
+
+
+
                 button2recuperar.setOnClickListener {
 
-                    db.collection("pisos").document((ncontador-6).toString()!!).get()
-                        .addOnSuccessListener {
-
-                            textViewdireccion.setText(it.get("nombre") as String?)
-
-                            textviewprecio.setText(it.get("telefono") as String?)
-                            var a : String= "nada"
-
-                            a=   it.id
-
-
-
-                        Toast.makeText(this,"$a",Toast.LENGTH_SHORT ).show()
-
-                        }
-
-
-                }
-
-                buttondelante.setOnClickListener {
-
-                    if (n<=ncontador-1){
-
-                        db.collection("pisos").document(n.toString()).get().addOnSuccessListener {
-                            rellenar(it)
-                        }
-                        if (n<ncontador-1){
-
-                            n++
-                        }
-
-                    }
-                    else{
-                        Toast.makeText(this, "NO hay mas pisos metidos",Toast.LENGTH_SHORT).show()
-                    }
-
-
-                }
-
-
-
-
-
+                   buscar("0")
 
 
                 }
@@ -249,24 +216,6 @@ lateinit var radiogrupo: RadioGroup
 
 
 
-                buttondetras.setOnClickListener {
-
-
-                    if (n>=1){
-
-                        db.collection("pisos").document(n.toString()).get().addOnSuccessListener {
-                            rellenar(it)
-
-                        }
-                        if (n>1){
-
-                            n--
-                        }
-
-                    }
-                    else{
-                        Toast.makeText(this, "NO hay mas pisos metidos",Toast.LENGTH_SHORT).show()
-                    }
 
 
 
@@ -276,7 +225,24 @@ lateinit var radiogrupo: RadioGroup
 
 
 
-                }  //fin buttondetras
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
@@ -290,8 +256,7 @@ lateinit var radiogrupo: RadioGroup
                         .get()
                         .addOnSuccessListener { result ->
 
-rellenar(                            result.last()
-)
+rellenar(   result.last() )
                             result.last()
                             result.elementAt(4).data.get("precio").toString()
                            Toast.makeText(this,
@@ -370,6 +335,23 @@ buscar("33")
         textviewsupp.setText(it?.get("supp") as String?)
         textURL.setText(it?.get("url") as String?)
         textViewtipo.setText(it?.get("tipo") as String?)
+
+    }
+
+
+
+    private fun nuevo(){
+        textviewaltura.text=""
+        textviewbano.text=""
+        textURL.text=""
+        textviewhabit.text=""
+        textViewdireccion.text=""
+        textviewprecio.text=""
+        textviewsupp.text=""
+        textViewtipo.text="VPO"
+        r1.isChecked=true
+        //textViewtipo.setText("VPO")
+
 
     }
 

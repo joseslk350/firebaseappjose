@@ -136,7 +136,7 @@ tools:context=".Addactividad">
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
-                    android:text="guardar/nuevo" />
+                    android:text="guardar" />
 
                 <Space
                     android:layout_width="25dp"
@@ -155,42 +155,27 @@ tools:context=".Addactividad">
                 android:layout_height="30dp" />
 
             <LinearLayout
-                android:layout_width="wrap_content"
+                android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:layout_weight="1"
                 android:orientation="horizontal">
 
-                <Button
-                    android:id="@+id/buttonatras"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="1"
-                    android:text="atras" />
-
-
-                <Space
-                    android:layout_width="30dp"
-                    android:layout_height="1dp"
-                    android:layout_weight="1" />
 
                 <Button
                     android:id="@+id/button2recuperar"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_weight="1"
                     android:text="Editar" />
 
                 <Space
-                    android:layout_width="25dp"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="1" />
+                    android:layout_width="120dp"
+                    android:layout_height="10dp" />
 
-                <Button
-                    android:id="@+id/buttondelante"
+                <TextView
+                    android:id="@+id/textViewtipo"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_weight="1"
-                    android:text="adelante" />
+                    android:text="TIPO" />
 
             </LinearLayout>
 
@@ -205,42 +190,39 @@ tools:context=".Addactividad">
 
                 <RadioGroup
                     android:id="@+id/radiogrupo"
-                    android:layout_width="wrap_content"
+                    android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_weight="1">
+                    android:orientation="horizontal">
 
                     <RadioButton
                         android:id="@+id/buttonVPO"
-                        android:layout_width="wrap_content"
+                        android:layout_width="0dp"
                         android:layout_height="wrap_content"
+                        android:layout_weight="1"
                         android:text="VPO" />
 
                     <RadioButton
                         android:id="@+id/buttonLIBRE"
-                        android:layout_width="wrap_content"
+                        android:layout_width="0dp"
                         android:layout_height="wrap_content"
+                        android:layout_weight="1"
                         android:text="LIBRE" />
 
                     <RadioButton
                         android:id="@+id/buttonCHALET"
-                        android:layout_width="wrap_content"
+                        android:layout_width="0dp"
                         android:layout_height="wrap_content"
+                        android:layout_weight="1"
                         android:text="CHALET" />
 
                     <RadioButton
                         android:id="@+id/buttonTERRENO"
-                        android:layout_width="wrap_content"
+                        android:layout_width="0dp"
                         android:layout_height="wrap_content"
+                        android:layout_weight="1"
                         android:text="TERRENO" />
 
                 </RadioGroup>
-
-                <TextView
-                    android:id="@+id/textViewtipo"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="1"
-                    android:text="TIPO" />
 
             </LinearLayout>
 
