@@ -1,9 +1,7 @@
 package org.jose.firebaseappjose
 
-import android.graphics.Bitmap
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import android.util.Log
 import android.widget.*
 import com.google.firebase.firestore.DocumentSnapshot
 import com.google.firebase.firestore.FirebaseFirestore
@@ -18,7 +16,7 @@ class Addactividad : AppCompatActivity() {
 
     lateinit var buttonguardar: Button
     lateinit var button2recuperar: Button
-    lateinit var button3eliminar: Button
+    lateinit var button3cancelar: Button
 
 
 
@@ -48,6 +46,7 @@ lateinit var radiogrupo: RadioGroup
     var n: Int = 0
     var ncontador: Int = 0
     var numero:Int=0
+    var hayconexion: Boolean =false
 
 
     lateinit var pisoadd: Piso
@@ -57,11 +56,11 @@ lateinit var radiogrupo: RadioGroup
         setContentView(R.layout.activity_add_actividad)
 
 
-        botonoff = findViewById<Button>(R.id.botcerrar)
+
 
         buttonguardar = findViewById<Button>(R.id.buttonguardar)
-        button2recuperar = findViewById<Button>(R.id.button2recuperar)
-        button3eliminar = findViewById<Button>(R.id.button3eliminar)
+
+        button3cancelar = findViewById<Button>(R.id.button3cerrar)
 
 
 
@@ -108,22 +107,9 @@ lateinit var radiogrupo: RadioGroup
         }
 
 
-//cuenta a lo cutre cuantos elementos hay en la lista. (cuando tenga tiempo ver si hay algun .size
+//cuenta numero elementos en la base datos. para añadir el ultimo id.
 
-        db.collection("pisos")
-            .get()
-            .addOnSuccessListener { result ->
-
-              ncontador=  result.size()
-
-
-
-                Toast.makeText(
-                    this, ncontador.toString(),
-                    Toast.LENGTH_SHORT
-                ).show()
-
-            }
+        contar(hayconexion)
 
 
 
@@ -183,6 +169,9 @@ lateinit var radiogrupo: RadioGroup
 
                    (application as Aplicacion).pisoList.add(pisoadd)
 
+                    nuevo()
+                    contar(hayconexion)
+
                     Toast.makeText(this, "Has GUARDADO un piso nuevo", Toast.LENGTH_SHORT)
                             .show()
 
@@ -194,74 +183,13 @@ lateinit var radiogrupo: RadioGroup
 
 
 
-
-
-
-
-
-                button2recuperar.setOnClickListener {
-
-                   buscar("0")
-
-
-                }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-                button3eliminar.setOnClickListener {
+                button3cancelar.setOnClickListener {
 
                    // db.collection("pisos").document(ncontador.toString()).delete()
 
+                    onBackPressed() //vuelve a la anterior como si presionas boton de volver
 
 
-                    db.collection("pisos")
-                        .get()
-                        .addOnSuccessListener { result ->
-
-rellenar(   result.last() )
-                            result.last()
-                            result.elementAt(4).data.get("precio").toString()
-                           Toast.makeText(this,
-                                result.elementAt(4).data.get("precio").toString(),Toast.LENGTH_SHORT).show()
-                        }
 
 
                 }
@@ -290,17 +218,31 @@ rellenar(   result.last() )
 
 
 
-                botonoff.setOnClickListener {
 
-                  //  onBackPressed() //vuelve a la anterior como si presionas boton de volver
 
-buscar("33")
+            }//fin oncreate
+
+
+
+
+
+
+    private fun contar(contar: Boolean) {
+        db.collection("pisos")
+                .get()
+                .addOnSuccessListener { result ->
+
+                    ncontador=  result.size()
+
+
+
+                    Toast.makeText(
+                            this, ncontador.toString(),
+                            Toast.LENGTH_SHORT
+                    ).show()
 
                 }
-
-
-            }
-
+    }
 
 
     private fun buscar(numero: String){
@@ -401,6 +343,24 @@ buscar("33")
 
 
 
+                botonoff.setOnClickListener {
+
+
+                    db.collection("pisos")
+                            .get()
+                            .addOnSuccessListener { result ->
+
+                                rellenar(   result.last() )
+
+
+                                Toast.makeText(this,
+                                        result.last().data.get("precio").toString(),Toast.LENGTH_SHORT).show()
+                                result.elementAt(4).data.get("precio").toString()
+                                Toast.makeText(this,
+                                        result.elementAt(4).data.get("precio").toString(),Toast.LENGTH_SHORT).show()
+                            }
+
+                }
 
 
 

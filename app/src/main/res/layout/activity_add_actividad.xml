@@ -22,22 +22,8 @@ tools:context=".Addactividad">
         android:orientation="vertical">
 
         <Space
-            android:layout_width="wrap_content"
-            android:layout_height="15dp" />
-
-        <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:orientation="horizontal">
-
-            <Button
-                android:id="@+id/botcerrar"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:text="cerrar" />
-
-        </LinearLayout>
+            android:layout_height="40dp" />
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -68,7 +54,9 @@ tools:context=".Addactividad">
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:layout_weight="1"
-                    android:hint="Nº Hab" />
+                    android:hint="Nº Hab"
+                    android:ems="10"
+                    android:inputType="number"/>
 
                 <Space
                     android:layout_width="15dp"
@@ -79,7 +67,9 @@ tools:context=".Addactividad">
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
-                    android:hint="Nº Baños" />
+                    android:hint="Nº Baños"
+                    android:ems="10"
+                    android:inputType="number"/>
 
                 <Space
                     android:layout_width="15dp"
@@ -90,7 +80,9 @@ tools:context=".Addactividad">
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
-                    android:hint="Altura" />
+                    android:hint="Altura"
+                    android:ems="10"
+                    android:inputType="number"/>
 
                 <Space
                     android:layout_width="15dp"
@@ -101,25 +93,11 @@ tools:context=".Addactividad">
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
-                    android:hint="Supp" />
+                    android:hint="Supp"
+                    android:ems="10"
+                    android:inputType="number"/>
 
             </LinearLayout>
-
-            <EditText
-                android:id="@+id/textviewprecio"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:hint="Precio" />
-
-            <Space
-                android:layout_width="match_parent"
-                android:layout_height="25dp" />
-
-            <EditText
-                android:id="@+id/textURL"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:hint="URL Foto:" />
 
             <Space
                 android:layout_width="match_parent"
@@ -130,58 +108,30 @@ tools:context=".Addactividad">
                 android:layout_height="match_parent"
                 android:orientation="horizontal">
 
-
-                <Button
-                    android:id="@+id/buttonguardar"
+                <EditText
+                    android:id="@+id/textviewprecio"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_weight="1"
-                    android:text="guardar" />
+                    android:layout_weight="3"
+                    android:hint="Precio" />
 
                 <Space
-                    android:layout_width="25dp"
-                    android:layout_height="wrap_content" />
-
-                <Button
-                    android:id="@+id/button3eliminar"
-                    android:layout_width="wrap_content"
+                    android:layout_width="15dp"
                     android:layout_height="wrap_content"
-                    android:layout_weight="1"
-                    android:text="eliminar" />
-            </LinearLayout>
-
-            <Space
-                android:layout_width="match_parent"
-                android:layout_height="30dp" />
-
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:layout_weight="1"
-                android:orientation="horizontal">
-
-
-                <Button
-                    android:id="@+id/button2recuperar"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="Editar" />
-
-                <Space
-                    android:layout_width="120dp"
-                    android:layout_height="10dp" />
+                    android:layout_weight="1" />
 
                 <TextView
                     android:id="@+id/textViewtipo"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
+                    android:layout_weight="1"
                     android:text="TIPO" />
 
             </LinearLayout>
 
             <Space
                 android:layout_width="match_parent"
-                android:layout_height="30dp" />
+                android:layout_height="25dp" />
 
             <LinearLayout
                 android:layout_width="match_parent"
@@ -228,9 +178,49 @@ tools:context=".Addactividad">
 
             <Space
                 android:layout_width="match_parent"
+                android:layout_height="25dp" />
+
+            <EditText
+                android:id="@+id/textURL"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="URL Foto:" />
+
+            <Space
+                android:layout_width="match_parent"
+                android:layout_height="30dp" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="horizontal">
+
+
+                <Button
+                    android:id="@+id/buttonguardar"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:text="guardar" />
+
+                <Space
+                    android:layout_width="25dp"
+                    android:layout_height="wrap_content" />
+
+                <Button
+                    android:id="@+id/button3cerrar"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:text="CANCELAR" />
+            </LinearLayout>
+
+            <Space
+                android:layout_width="match_parent"
                 android:layout_height="80dp" />
 
         </LinearLayout>
+
     </LinearLayout>
 </ScrollView>
 
