@@ -114,69 +114,80 @@ lateinit var radiogrupo: RadioGroup
 
 
                 buttonguardar.setOnClickListener {
-                    db.collection("pisos").document(ncontador.toString()!!).set(
 
-                        hashMapOf(
+                    if (textViewdireccion.text.toString()!="") {
 
-                            "nombre" to textViewdireccion.text.toString(),
-                            "precio" to textviewprecio.text.toString(),
-                            "url" to textURL.text.toString(),
-                                "habitacion" to textviewhabit.text.toString(),
-                                "bano" to textviewbano.text.toString(),
-                                "altura" to textviewaltura.text.toString(),
-                                "supp" to textviewsupp.text.toString(),
-                                "tipo" to textViewtipo.text.toString(),
+                        db.collection("pisos").document(ncontador.toString()!!).set(
+
+                                hashMapOf(
+
+                                        "nombre" to textViewdireccion.text.toString(),
+                                        "precio" to textviewprecio.text.toString(),
+                                        "url" to textURL.text.toString(),
+                                        "habitacion" to textviewhabit.text.toString(),
+                                        "bano" to textviewbano.text.toString(),
+                                        "altura" to textviewaltura.text.toString(),
+                                        "supp" to textviewsupp.text.toString(),
+                                        "tipo" to textViewtipo.text.toString(),
 
 
 
+                                        )
                         )
-                    )
+
+
+                        val pisoadd = Piso().apply {
+
+                            idpiso=""
+                            actualizado=false
+                            altura="0"
+                            bano="0"
+                            url=""
+                            habitacion="0"
+                            nombre=""
+                            precio=""
+                            supp=""
+                            tipo="VPO"
+                            foto=null
+                        }//fin apply
+
+                        pisoadd.idpiso=ncontador.toString()
+                        pisoadd.altura=textviewaltura.text.toString()
+                        pisoadd.bano=textviewbano.text.toString()
+                        // pisoadd.url=textURL.text.toString()
+                        //NO QUIERO QUE AÑADA FOTOS PORQUE ESCRIBIRA MAL LA URL
+                        pisoadd.url=""
+                        pisoadd.habitacion=textviewhabit.text.toString()
+                        pisoadd.nombre=textViewdireccion.text.toString()
+                        pisoadd.precio=textviewprecio.text.toString()
+                        pisoadd.supp=textviewsupp.text.toString()
+                        pisoadd.tipo=textViewtipo.text.toString()
+                        //  pisoadd.foto=null  --> no lo estoy usando .foto en ninguna parte.
+
+
+
+
+                        (application as Aplicacion).pisoList.add(pisoadd)
+
+                        nuevo()
+                        contar(hayconexion)
+
+                        Toast.makeText(this, "Has GUARDADO un piso nuevo", Toast.LENGTH_SHORT)
+                                .show()
+
+
+
+                    }//fin if
+                    else
+                    {
+                        Toast.makeText(this, "El piso tiene que tener alguna dirección para poder guardar",Toast.LENGTH_LONG).show()
+                    }//fin else
 
 
 
 
 
-                    val pisoadd = Piso().apply {
-
-                        idpiso=""
-                        actualizado=false
-                        altura="0"
-                        bano="0"
-                        url=""
-                        habitacion="0"
-                        nombre=""
-                        precio=""
-                        supp=""
-                        tipo="VPO"
-                        foto=null
-                    }
-
-                    pisoadd.idpiso=ncontador.toString()
-                   pisoadd.altura=textviewaltura.text.toString()
-                    pisoadd.bano=textviewbano.text.toString()
-                   // pisoadd.url=textURL.text.toString()
-                    //NO QUIERO QUE AÑADA FOTOS PORQUE ESCRIBIRA MAL LA URL
-                    pisoadd.url=""
-                    pisoadd.habitacion=textviewhabit.text.toString()
-                    pisoadd.nombre=textViewdireccion.text.toString()
-                    pisoadd.precio=textviewprecio.text.toString()
-                    pisoadd.supp=textviewsupp.text.toString()
-                    pisoadd.tipo=textViewtipo.text.toString()
-                  //  pisoadd.foto=null  --> no lo estoy usando .foto en ninguna parte.
-
-
-
-
-                   (application as Aplicacion).pisoList.add(pisoadd)
-
-                    nuevo()
-                    contar(hayconexion)
-
-                    Toast.makeText(this, "Has GUARDADO un piso nuevo", Toast.LENGTH_SHORT)
-                            .show()
-
-
-                }
+                }//fin boton guardar
 
 
 

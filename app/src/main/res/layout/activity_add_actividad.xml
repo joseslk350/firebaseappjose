@@ -112,19 +112,24 @@ tools:context=".Addactividad">
                     android:id="@+id/textviewprecio"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_weight="3"
+                    android:layout_weight="5"
                     android:hint="Precio" />
 
                 <Space
-                    android:layout_width="15dp"
+                    android:layout_width="10dp"
+                    android:layout_height="wrap_content" />
+
+                <TextView
+                    android:id="@+id/labeltipo1"
+                    android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_weight="1" />
+                    android:text="TIPO:  " />
 
                 <TextView
                     android:id="@+id/textViewtipo"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_weight="1"
+                    android:layout_weight="2"
                     android:text="TIPO" />
 
             </LinearLayout>
