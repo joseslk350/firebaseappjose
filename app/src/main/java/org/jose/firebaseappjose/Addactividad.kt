@@ -26,6 +26,7 @@ class Addactividad : AppCompatActivity() {
     lateinit var r4 : RadioButton
 
 
+    //comennto
 
     lateinit var textViewdireccion: TextView
     lateinit var textviewprecio: TextView
