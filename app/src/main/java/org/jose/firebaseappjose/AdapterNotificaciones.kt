@@ -12,27 +12,27 @@ import androidx.recyclerview.widget.RecyclerView
 
 
 
-class AdapterNotificaciones(private val bookList: List<Cliente>, val context: Context) : RecyclerView.Adapter<AdapterNotificaciones.MyViewHolder>(){
+class AdapterNotificaciones(private val clienteList: List<Cliente>, val context: Context) : RecyclerView.Adapter<AdapterNotificaciones.MyViewHolder>(){
 
     inner class MyViewHolder(view: View) : RecyclerView.ViewHolder(view) , View.OnClickListener{
         private var bItem: Cliente? = null
-        var title: TextView
-        var pages: TextView
-        var author: TextView
+        var nombr: TextView
+        var telef: TextView
+        var emailll: TextView
 
         init {
-            title = view.findViewById<View>(R.id.renombre) as TextView
-            author = view.findViewById<View>(R.id.reemail) as TextView
-            pages = view.findViewById<View>(R.id.retelefono) as TextView
+            nombr = view.findViewById<View>(R.id.renombre) as TextView
+            emailll = view.findViewById<View>(R.id.reemail) as TextView
+            telef = view.findViewById<View>(R.id.retelefono) as TextView
             view.setOnClickListener(this);
 
         }
 
-        fun setItem(book: Cliente) {
-            bItem = book
-            title.text = book.nombre
-            author.text = book.emailc
-            pages.text = book.telefono
+        fun setItem(clien: Cliente) {
+            bItem = clien
+            nombr.text = clien.nombre
+            emailll.text = clien.emailc
+            telef.text = clien.telefono
         }
 
         override fun onClick(view: View) {
@@ -41,6 +41,9 @@ class AdapterNotificaciones(private val bookList: List<Cliente>, val context: Co
             intent.putExtra("telefono", bItem!!.telefono)
             intent.putExtra("email", bItem!!.emailc)
             intent.putExtra("mensaje", bItem!!.mensaje)
+            intent.putExtra("desde", bItem!!.desde)
+            intent.putExtra("id", bItem!!.id)
+
             (context as Activity).startActivity(intent)
         }
 
@@ -55,12 +58,12 @@ class AdapterNotificaciones(private val bookList: List<Cliente>, val context: Co
     }
 
     override fun onBindViewHolder(holder: MyViewHolder, position: Int) {
-        val book = bookList[position]
+        val book = clienteList[position]
         holder.setItem(book)
     }
 
     override fun getItemCount(): Int {
-        return bookList.size
+        return clienteList.size
     }
 }
 

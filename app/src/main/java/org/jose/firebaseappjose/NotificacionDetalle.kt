@@ -6,6 +6,8 @@ import android.content.pm.PackageManager
 import android.net.Uri
 import android.os.Bundle
 import android.text.TextUtils
+import android.widget.ImageButton
+import android.widget.Switch
 import android.widget.TextView
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
@@ -13,6 +15,7 @@ import androidx.core.app.ActivityCompat
 import androidx.core.content.ContextCompat
 import com.google.android.material.floatingactionbutton.FloatingActionButton
 import com.google.android.material.snackbar.Snackbar
+import com.google.firebase.firestore.FirebaseFirestore
 
 
 class NotificacionDetalle : AppCompatActivity() {
@@ -25,7 +28,13 @@ lateinit var texttelefono: TextView
     lateinit var textmensaje: TextView
     lateinit var fabescribir: FloatingActionButton
     lateinit var fabllamar: FloatingActionButton
+    lateinit var textorigen: TextView
+    lateinit var swich : Switch
+    var dejarborrar: Boolean=false
+    lateinit var botondelete: ImageButton
 
+
+    private val db= FirebaseFirestore.getInstance()  //conectado a la base firebase
 
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -38,6 +47,9 @@ lateinit var texttelefono: TextView
         textmensaje=findViewById<TextView>(R.id.textmensaje)
 fabescribir=findViewById(R.id.fabescribir)
         fabllamar=findViewById(R.id.fabllamar)
+        textorigen=findViewById<TextView>(R.id.textorigen)
+        swich=findViewById(R.id.switch1)
+       botondelete=findViewById(R.id.buttondelete)
 
 
 
@@ -45,11 +57,18 @@ fabescribir=findViewById(R.id.fabescribir)
         val telefono = intent.extras?.get("telefono")
         val email= intent.extras?.get("email")
         val mensaje = intent.extras?.get("mensaje")
-      //  item=(application as Aplicacion).findDataByTitle(title = title.toString())
+        val origen = intent.extras?.get("desde")
+        val idd = intent.extras?.get("id")
+
+
+
+
+        //  item=(application as Aplicacion).findDataByTitle(title = title.toString())
         textnombre.text= nombre.toString()
         texttelefono.text = telefono.toString()
         textemail.text=email.toString()
         textmensaje.text=mensaje.toString()
+        textorigen.text=origen.toString()
 
 
 
@@ -84,10 +103,30 @@ fabescribir=findViewById(R.id.fabescribir)
 
 
 
+swich.setOnCheckedChangeListener { buttonView, isChecked ->
+
+    if (isChecked){
+        swich.text="SI"
+        dejarborrar=true
+    }else{
+        swich.text="NO"
+        dejarborrar=false
+    }
 
 
+}//fin switch
 
 
+botondelete.setOnClickListener {
+    if(dejarborrar){
+        Toast.makeText(this, "dejo borrar",Toast.LENGTH_SHORT).show()
+        db.collection("users").document(idd.toString()).delete()
+
+    }else{
+        Toast.makeText(this, "NO borrar",Toast.LENGTH_SHORT).show()
+
+    }
+}//fin botondelete
 
 
 

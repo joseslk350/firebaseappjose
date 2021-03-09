@@ -55,6 +55,8 @@ var urldeimagen: String=""
                     var ema: String="${document.data.get("email")}"
                     var tel: String="${document.data.get("telefono")}"
                     var men: String="${document.data.get("mensaje")}"
+                    var des: String="${document.data.get("desde")}"
+                    var id1: String= document.id
 
                     var cliente = Cliente()
 
@@ -62,10 +64,13 @@ var urldeimagen: String=""
                     cliente.emailc=ema
                     cliente.telefono=tel
                     cliente.mensaje=men
+                    cliente.desde=des
+                    cliente.id=id1
+
                     clientelistaappli.add(cliente)
 
-
                 }
+
             }
             .addOnFailureListener { exception ->
 
