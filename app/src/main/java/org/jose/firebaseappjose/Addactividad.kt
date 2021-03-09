@@ -12,10 +12,8 @@ class Addactividad : AppCompatActivity() {
     private val db = FirebaseFirestore.getInstance()  //conectado a la base firebase
 
 
-    lateinit var botonoff: Button
 
     lateinit var buttonguardar: Button
-    lateinit var button2recuperar: Button
     lateinit var button3cancelar: Button
 
 
@@ -26,7 +24,6 @@ class Addactividad : AppCompatActivity() {
     lateinit var r4 : RadioButton
 
 
-    //comennto
 
     lateinit var textViewdireccion: TextView
     lateinit var textviewprecio: TextView
@@ -41,12 +38,8 @@ lateinit var radiogrupo: RadioGroup
 
 
 
-    lateinit var cliente: Cliente
-    val clientesLista = mutableListOf<Cliente>()
-    lateinit var contador: String
-    var n: Int = 0
     var ncontador: Int = 0
-    var numero:Int=0
+
     var hayconexion: Boolean =false
 
 
@@ -118,7 +111,7 @@ lateinit var radiogrupo: RadioGroup
 
                     if (textViewdireccion.text.toString()!="") {
 
-                        db.collection("pisos").document(ncontador.toString()!!).set(
+                        db.collection("pisos").document().set(
 
                                 hashMapOf(
 
@@ -257,9 +250,9 @@ lateinit var radiogrupo: RadioGroup
     }
 
 
-    private fun buscar(numero: String){
+    private fun buscar(iddoc: String){
 
-        db.collection("pisos").document("$numero").get()
+        db.collection("pisos").document("$iddoc").get()
                 .addOnSuccessListener { document ->
                     if (document != null) {
 
@@ -347,6 +340,8 @@ lateinit var radiogrupo: RadioGroup
                             Toast.makeText(this, "Error getting documents: ", Toast.LENGTH_SHORT)
                                 .show()
 
+
+                        //no sirve  Toast.makeText(this,it.getDocumentReference("pisos").toString(),Toast.LENGTH_SHORT ).show()
 
                         }
 
