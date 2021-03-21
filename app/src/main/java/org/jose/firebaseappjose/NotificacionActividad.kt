@@ -32,7 +32,6 @@ class NotificacionActividad : AppCompatActivity() {
     lateinit var clientesLista: MutableList<Cliente>
 
     private var mAdapter: AdapterNotificaciones? = null
-    private var bAdapter: AdapterNotificaciones? = null
     private var reciclerView: RecyclerView? = null
 
     override fun onCreate(savedInstanceState: Bundle?) {
